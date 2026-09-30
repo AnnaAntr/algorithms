@@ -1,7 +1,6 @@
 package Trees;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class BinaryTree {
     public static void main(String[] args) {
@@ -9,20 +8,32 @@ public class BinaryTree {
         Node right = new Node(3, null, new Node(6));
         Node root = new Node(1, left, right);
 
-//        System.out.println(preorderTraversal(root));
-//        System.out.println(postorderTraversal(root));
-
-
         List<Integer> result = new ArrayList<>();
+
+        System.out.println("Preorder:");
         recursivePreorder(root, result);
         System.out.println(result);
 
+        result.clear();
+        iterativePreorder(root, result);
+        System.out.println(result);
+
+        System.out.println("Inorder:");
+        result.clear();
+        recursiveInorder(root, result);
+        System.out.println(result);
+
+        result.clear();
+        iterativeInorder(root, result);
+        System.out.println(result);
+
+        System.out.println("Postorder:");
         result.clear();
         recursivePostorder(root, result);
         System.out.println(result);
 
         result.clear();
-        recursiveInorder(root, result);
+        iterativePostorder(root, result);
         System.out.println(result);
     }
 
@@ -66,6 +77,68 @@ public class BinaryTree {
             recursiveInorder(node.left, result);
             result.add(node.value);
             recursiveInorder(node.right, result);
+        }
+    }
+
+    public static void iterativePreorder(Node root, List<Integer> result) {
+        if (root == null)
+            return;
+
+        Deque<Node> stack = new ArrayDeque<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            Node node = stack.poll();
+            result.add(node.value);
+            if (node.right != null) stack.push(node.right);
+            if (node.left != null) stack.push(node.left);
+        }
+    }
+
+    public static void iterativeInorder(Node root, List<Integer> result) {
+        if (root == null)
+            return;
+
+        Deque<Node> stack = new ArrayDeque<>();
+        Node node = root;
+
+        while (node != null || !stack.isEmpty()) {
+            if (node != null) {
+                stack.push(node);
+                node = node.left;
+            }
+            else {
+                node = stack.pop();
+                result.add(node.value);
+                node = node.right;
+            }
+        }
+    }
+
+    public static void iterativePostorder(Node root, List<Integer> result) {
+        if (root == null)
+            return;
+
+        Deque<Node> stack = new ArrayDeque<>();
+
+        Node node = root;
+        Node lastVisited = null;
+
+        while (node != null || !stack.isEmpty()) {
+            if (node != null) {
+                stack.push(node);
+                node = node.left;
+            }
+            else {
+                Node top = stack.peek();
+                if (top.right != null && top.right != lastVisited) {
+                    node = top.right;
+                }
+                else {
+                    result.add(top.value);
+                    lastVisited = stack.pop();
+                }
+            }
         }
     }
 }
