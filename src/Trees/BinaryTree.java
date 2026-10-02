@@ -2,11 +2,12 @@ package Trees;
 
 import java.util.*;
 
+// LeetCode #144  #145  # 94
 public class BinaryTree {
     public static void main(String[] args) {
-        Node left = new Node(2, new Node(4), new Node(5));
-        Node right = new Node(3, null, new Node(6));
-        Node root = new Node(1, left, right);
+        TreeNode left = new TreeNode(2, new TreeNode(4), new TreeNode(5));
+        TreeNode right = new TreeNode(3, null, new TreeNode(6));
+        TreeNode root = new TreeNode(1, left, right);
 
         List<Integer> result = new ArrayList<>();
 
@@ -37,24 +38,7 @@ public class BinaryTree {
         System.out.println(result);
     }
 
-    public static class Node {
-        int value;
-        Node left;
-        Node right;
-
-        public Node(int value) {
-            this.value = value;
-        }
-
-        public Node(int value, Node left, Node right) {
-            this.value = value;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
-    // LeetCode #144
-    public static void recursivePreorder(Node node, List<Integer> result) {
+    public static void recursivePreorder(TreeNode node, List<Integer> result) {
         if (node != null) {
             result.add(node.value);
             recursivePreorder(node.left, result);
@@ -62,8 +46,7 @@ public class BinaryTree {
         }
     }
 
-    // LeetCode #145
-    public static void recursivePostorder(Node node, List<Integer> result) {
+    public static void recursivePostorder(TreeNode node, List<Integer> result) {
         if (node != null) {
             recursivePostorder(node.left, result);
             recursivePostorder(node.right, result);
@@ -71,8 +54,7 @@ public class BinaryTree {
         }
     }
 
-    // LeetCode #94
-    public static void recursiveInorder(Node node, List<Integer> result) {
+    public static void recursiveInorder(TreeNode node, List<Integer> result) {
         if (node != null) {
             recursiveInorder(node.left, result);
             result.add(node.value);
@@ -80,27 +62,27 @@ public class BinaryTree {
         }
     }
 
-    public static void iterativePreorder(Node root, List<Integer> result) {
+    public static void iterativePreorder(TreeNode root, List<Integer> result) {
         if (root == null)
             return;
 
-        Deque<Node> stack = new ArrayDeque<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
         stack.push(root);
 
         while (!stack.isEmpty()) {
-            Node node = stack.poll();
+            TreeNode node = stack.poll();
             result.add(node.value);
             if (node.right != null) stack.push(node.right);
             if (node.left != null) stack.push(node.left);
         }
     }
 
-    public static void iterativeInorder(Node root, List<Integer> result) {
+    public static void iterativeInorder(TreeNode root, List<Integer> result) {
         if (root == null)
             return;
 
-        Deque<Node> stack = new ArrayDeque<>();
-        Node node = root;
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode node = root;
 
         while (node != null || !stack.isEmpty()) {
             if (node != null) {
@@ -115,14 +97,14 @@ public class BinaryTree {
         }
     }
 
-    public static void iterativePostorder(Node root, List<Integer> result) {
+    public static void iterativePostorder(TreeNode root, List<Integer> result) {
         if (root == null)
             return;
 
-        Deque<Node> stack = new ArrayDeque<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
 
-        Node node = root;
-        Node lastVisited = null;
+        TreeNode node = root;
+        TreeNode lastVisited = null;
 
         while (node != null || !stack.isEmpty()) {
             if (node != null) {
@@ -130,7 +112,7 @@ public class BinaryTree {
                 node = node.left;
             }
             else {
-                Node top = stack.peek();
+                TreeNode top = stack.peek();
                 if (top.right != null && top.right != lastVisited) {
                     node = top.right;
                 }
