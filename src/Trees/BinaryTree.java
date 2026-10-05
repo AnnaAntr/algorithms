@@ -41,6 +41,8 @@ public class BinaryTree {
         result.clear();
         iterativeLevelorder(root, result);
         System.out.println(result);
+
+        System.out.println(height(root));
     }
 
     public static void recursivePreorder(TreeNode node, List<Integer> result) {
@@ -145,5 +147,15 @@ public class BinaryTree {
             if (node.right != null)
                 queue.add(node.right);
         }
+    }
+
+    public static int height(TreeNode node) {
+        if (node == null)
+            return 0;
+
+        int leftHeight = height(node.left);
+        int rightHeight = height(node.right);
+
+        return 1 + Math.max(leftHeight, rightHeight);
     }
 }
