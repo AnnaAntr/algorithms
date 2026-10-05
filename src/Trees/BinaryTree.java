@@ -36,6 +36,11 @@ public class BinaryTree {
         result.clear();
         iterativePostorder(root, result);
         System.out.println(result);
+
+        System.out.println("Levelorder:");
+        result.clear();
+        iterativeLevelorder(root, result);
+        System.out.println(result);
     }
 
     public static void recursivePreorder(TreeNode node, List<Integer> result) {
@@ -121,6 +126,24 @@ public class BinaryTree {
                     lastVisited = stack.pop();
                 }
             }
+        }
+    }
+
+    public static void iterativeLevelorder(TreeNode root, List<Integer> result) {
+        if (root == null)
+            return;
+
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            result.add(node.value);
+
+            if (node.left != null)
+                queue.add(node.left);
+            if (node.right != null)
+                queue.add(node.right);
         }
     }
 }
