@@ -39,7 +39,7 @@ public class BinaryTree {
 
         System.out.println("Levelorder:");
         result.clear();
-        iterativeLevelorder(root, result);
+        levelorder(root, result);
         System.out.println(result);
 
         System.out.println(height(root));
@@ -131,7 +131,7 @@ public class BinaryTree {
         }
     }
 
-    public static void iterativeLevelorder(TreeNode root, List<Integer> result) {
+    public static void levelorder(TreeNode root, List<Integer> result) {
         if (root == null)
             return;
 

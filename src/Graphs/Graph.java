@@ -27,6 +27,12 @@ public class Graph {
         iterativeDFS(graph, 0);
         System.out.print("\nRecursive DFS: ");
         recursiveDFS(graph, 0, new boolean[graph[0].length]);
+
+        System.out.print("\nBFS: ");
+        BFS(graph, 0);
+
+        System.out.print("\nBFS: ");
+        BFS(graph2, 0);
     }
 
     public static void recursiveDFS(int[][] graph, int from, boolean[] visited) {
@@ -43,7 +49,6 @@ public class Graph {
         Deque<Integer> stack = new ArrayDeque<>();
         boolean[] visited = new boolean[graph[0].length];
 
-        visited[start] = true;
         stack.push(start);
 
         while (!stack.isEmpty()) {
@@ -54,8 +59,29 @@ public class Graph {
 
             for (int to = 0; to < graph[from].length; to++) {
                 if (graph[from][to] == 1 && !visited[to]) {
-                    visited[to] = true;
                     stack.push(to);
+                    visited[to] = true;
+                }
+            }
+        }
+    }
+
+    public static void BFS(int[][] graph, int start) {
+        Deque<Integer> queue = new ArrayDeque<>();
+        boolean[] visited = new boolean[graph[0].length];
+
+        visited[start] = true;
+        queue.offer(start);
+
+        while (!queue.isEmpty()) {
+            int from = queue.poll();
+
+            System.out.print(from + 1 + " ");
+
+            for (int to = 0; to < graph[from].length; to++) {
+                if (graph[from][to] == 1 && !visited[to]) {
+                    queue.offer(to);
+                    visited[to] = true;
                 }
             }
         }
