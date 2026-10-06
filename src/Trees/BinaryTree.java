@@ -2,7 +2,6 @@ package Trees;
 
 import java.util.*;
 
-// LeetCode #144  #145  # 94
 public class BinaryTree {
     public static void main(String[] args) {
         TreeNode left = new TreeNode(2, new TreeNode(4), new TreeNode(5));
@@ -42,9 +41,11 @@ public class BinaryTree {
         iterativeLevelorder(root, result);
         System.out.println(result);
 
+        System.out.println("Height:");
         System.out.println(height(root));
     }
 
+    // LeetCode #144
     public static void recursivePreorder(TreeNode node, List<Integer> result) {
         if (node != null) {
             result.add(node.value);
@@ -53,6 +54,7 @@ public class BinaryTree {
         }
     }
 
+    // LeetCode #145
     public static void recursivePostorder(TreeNode node, List<Integer> result) {
         if (node != null) {
             recursivePostorder(node.left, result);
@@ -61,6 +63,7 @@ public class BinaryTree {
         }
     }
 
+    // LeetCode #94
     public static void recursiveInorder(TreeNode node, List<Integer> result) {
         if (node != null) {
             recursiveInorder(node.left, result);
@@ -149,6 +152,7 @@ public class BinaryTree {
         }
     }
 
+    // LeetCode #104
     public static int height(TreeNode node) {
         if (node == null)
             return 0;
