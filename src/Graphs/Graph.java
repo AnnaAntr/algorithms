@@ -25,6 +25,7 @@ public class Graph {
 
         System.out.print("Iterative DFS: ");
         iterativeDFS(graph, 0);
+
         System.out.print("\nRecursive DFS: ");
         recursiveDFS(graph, 0, new boolean[graph[0].length]);
 
@@ -50,10 +51,10 @@ public class Graph {
         boolean[] visited = new boolean[graph[0].length];
 
         stack.push(start);
+        visited[start] = true;
 
         while (!stack.isEmpty()) {
             int from = stack.pop();
-            visited[from] = true;
 
             System.out.print(from + 1 + " ");
 
