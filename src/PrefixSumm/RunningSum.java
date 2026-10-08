@@ -7,7 +7,7 @@ public class RunningSum {
     public static void main(String[] args) {
         int[] result = runningSum(new int[] {1, 2, 3, 4});
         System.out.println(Arrays.toString(result));
-        
+
         result = runningSum(new int[] {-2, 0, 3, -5, 2, -1});
         System.out.println(Arrays.toString(result));
     }
