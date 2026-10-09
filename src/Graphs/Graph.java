@@ -71,8 +71,8 @@ public class Graph {
         Deque<Integer> queue = new ArrayDeque<>();
         boolean[] visited = new boolean[graph[0].length];
 
-        visited[start] = true;
         queue.offer(start);
+        visited[start] = true;
 
         while (!queue.isEmpty()) {
             int from = queue.poll();
