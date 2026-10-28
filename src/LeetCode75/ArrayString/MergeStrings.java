@@ -3,7 +3,9 @@ package LeetCode75.ArrayString;
 // LeetCode # 1768
 public class MergeStrings {
     public static void main(String[] args) {
-        System.out.println(mergeAlternately("abcd", "pq"));
+        System.out.println(mergeAlternately("abc", "pq"));
+        System.out.println(mergeAlternately("abcd", "pqr"));
+        System.out.println(mergeAlternately("ab", "pqrs"));
     }
 
     public static String mergeAlternately(String word1, String word2) {
