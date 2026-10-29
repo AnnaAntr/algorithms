@@ -6,8 +6,6 @@ public class CanPlaceFlowers {
         System.out.println(canPlaceFlowers(new int[] {1, 0, 0, 0, 1}, 1));
         System.out.println(canPlaceFlowers(new int[] {1, 0, 0, 0, 1}, 2));
         System.out.println(canPlaceFlowers(new int[] {0, 0, 1, 0, 1}, 1));
-
-
         System.out.println(canPlaceFlowers(new int[] {1, 0, 0, 0, 0, 1}, 2));
     }
 
