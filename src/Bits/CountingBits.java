@@ -5,7 +5,7 @@ import java.util.Arrays;
 // LeetCode #338
 public class CountingBits {
     public static void main(String[] args) {
-        int[] res = countBits(5);
+        int[] res = countBits(15);
         System.out.println(Arrays.toString(res));
     }
 
