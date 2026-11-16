@@ -22,7 +22,7 @@ public class DijkstraAlgorithm {
         System.out.println(Arrays.toString(res));
     }
 
-    public static int[] dijkstra(int graph[][], int start) {
+    public static int[] dijkstra(int[][] graph, int start) {
         int n = graph.length;
         boolean[] visited = new boolean[n];
 
@@ -53,7 +53,6 @@ public class DijkstraAlgorithm {
         return distances;
     }
 
-
     public static int[] optimizedDijkstra(int[][] graph, int start) {
         int n = graph.length;
         int[] distances = new int[n];
@@ -67,7 +66,7 @@ public class DijkstraAlgorithm {
             int[] curr = queue.poll();
             int from = curr[0];
             int d = curr[1];
-            
+
             if (d > distances[from]) continue;
 
             for (int to = 0; to < n; to++) {
@@ -83,5 +82,4 @@ public class DijkstraAlgorithm {
 
         return distances;
     }
-
 }
