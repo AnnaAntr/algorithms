@@ -3,12 +3,14 @@ package SlidingWindow;
 import java.util.HashMap;
 import java.util.Map;
 
+// LeetCode #3
 public class LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
-        System.out.println(longestUniqueSubstring("abcabcbb"));
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(lengthOfLongestSubstring("bbbbb"));
     }
 
-    public static int longestUniqueSubstring(String s) {
+    public static int lengthOfLongestSubstring(String s) {
         Map<Character, Integer> hashMap = new HashMap<>();
         int max = 0;
         int left = 0;
