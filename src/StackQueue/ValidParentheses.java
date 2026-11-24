@@ -10,7 +10,6 @@ public class ValidParentheses {
         System.out.println(isValid("[(}())]"));
     }
 
-
     public static boolean isValid(String s) {
         Deque<Character> stack = new ArrayDeque<>();
 
